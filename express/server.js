@@ -2,7 +2,9 @@
 const express = require('express');
 const path = require('path');
 const serverless = require('serverless-http');
+const Parser = require('rss-parser');
 const app = express();
+const parser = new Parser();
 const bodyParser = require('body-parser');
 
 const router = express.Router();
@@ -11,7 +13,13 @@ router.get('/', (req, res) => {
   res.write('<h1>Hello from Express.js!</h1>');
   res.end();
 });
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
+router.get('/tech-feed', async (req, res) => {
+  const feeds = await parser.parseURL('https://medium.com/feed/@karansinghvirdi').catch(e => {
+    res.status(400).send({message: e.message || 'Something went wrong!'})
+  });
+  res.status(200).send({feeds})
+});
+
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
