@@ -17,7 +17,7 @@ router.get('/tech-feed', async (req, res) => {
   const feeds = await parser.parseURL('https://medium.com/feed/@karansinghvirdi').catch(e => {
     res.status(400).send({message: e.message || 'Something went wrong!'})
   });
-  res.status(200).send({feeds})
+  res.status(200).send({data: {feeds}});
 });
 
 router.post('/', (req, res) => res.json({ postBody: req.body }));
