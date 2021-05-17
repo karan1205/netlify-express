@@ -44,7 +44,6 @@ router.get('/travel', async (req, res) => {
 });
 
 router.post('/send-mail', (req, res) => {
-  console.log(req.body);
   const {name, email, message} = req.body;
   const transporter = nodemailer.createTransport(smtpTransport({
     service: process.env.MAIL_SERVICE,
@@ -58,8 +57,8 @@ router.post('/send-mail', (req, res) => {
                Email: ${email}
                Message: ${message}`;
   const mailOptions = {
-    from: process.env.MAIL_SERVICE,
-    to: process.env.MAIL_SERVICE,
+    from: process.env.MAIL_USER_EMAIL,
+    to: process.env.MAIL_USER_EMAIL,
     subject: 'Message from karansinghvirdi.com',
     text
   };
