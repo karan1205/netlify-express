@@ -44,7 +44,8 @@ router.get('/travel', async (req, res) => {
 });
 
 router.get('/send-mail', async (req, res) => {
-  const {name, email, message} = req.query;
+  const {name, email, message} = req.body;
+  console.log(req.body);
   const transporter = nodemailer.createTransport(smtpTransport({
     service: process.env.MAIL_SERVICE,
     host: process.env.MAIL_HOST,
