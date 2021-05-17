@@ -54,12 +54,12 @@ router.post('/send-mail', (req, res) => {
       pass: process.env.MAIL_USER_PASS
     }
   }));
-  const text = `<p>Name: ${name}</p>
-               <p>Email: ${email}</p>
-               <p>Message: ${message}</p>`;
+  const text = `Name: ${name}
+               Email: ${email}
+               Message: ${message}`;
   const mailOptions = {
     from: process.env.MAIL_SERVICE,
-    to: email,
+    to: process.env.MAIL_SERVICE,
     subject: 'Message from karansinghvirdi.com',
     text
   };
