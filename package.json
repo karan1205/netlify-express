@@ -23,6 +23,8 @@
   "homepage": "https://github.com/neverendingqs/netlify-express#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "nodemailer": "^6.6.0",
+    "nodemailer-smtp-transport": "^2.7.4",
     "rss-parser": "^3.12.0"
   },
   "devDependencies": {
